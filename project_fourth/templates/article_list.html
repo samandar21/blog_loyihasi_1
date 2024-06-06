@@ -1,0 +1,29 @@
+{% extends "base.html" %}
+
+{% block title %}
+    Articles list page
+{% endblock title %}
+
+{% block content %}
+    {% for article in object_list %}
+        <div class="card text-center mx-auto">
+            <div class="card-header" >
+                <a href="{% url "article_detail" article.pk %}"><h3>{{article.title}}</h3></a>
+            </div>
+        </div>
+        {% if article.photo %}
+        <div class="card text-center" style="width: 46rem ; margin: 0 auto;">
+            <img src="{{article.photo.url}}" class="card-img-top" alt="{{article.title}}">
+        </div>
+
+        {% endif %}
+        <div class="card-body text-center">
+            <p class="card-text">{{article.summary}}</p>
+        </div>
+        <div class="card-footer text-center text-muted">
+            <span class="text-muted">Muallif:{{article.author|title}} - {{article.date}}</span>
+        </div>
+        
+        
+    {% endfor %}
+{% endblock content %}

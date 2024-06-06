@@ -1,0 +1,24 @@
+{% extends "base.html" %}
+
+{% block title %}
+    Bosh sahifa
+{% endblock title %}
+
+{% block content %}
+    {% if user.is_authenticated %}
+        {{user.username}}!
+        <p><a href="{%url 'logout'%}">Chiqib ketish</a></p>
+    {% else %}
+        <h4>Saytdan login yoki ro'yxatdan o'tish qilinmagan</h4>
+        
+    {% endif %}
+    <div class="card text-center mx-auto" style="width: 28rem;">
+        <img src="media/images/WIN_20240403_14_37_56_Pro.jpg" class="card-img-top" alt="Bu yerda rasm bo'lishi kerak endi!">
+        <div class="card-body">
+          <h5 class="card-title">Assalomu allaykum!<br>Samandar Xolmo'minovning blog sahifasi</h5>
+          <p class="card-text">Siz mening blog sahifamda o'z postlaringizni qoldirishingiz mumkin va boshqa postlarni o'qishingiz mumkin!</p>
+          <a href="{% url "article_list" %}" class="btn btn-primary">Barcha postlar</a>
+        </div>
+    </div>
+    
+{% endblock content %}

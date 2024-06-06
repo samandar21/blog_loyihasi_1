@@ -1,0 +1,40 @@
+{% extends "base.html" %}
+
+{% block title %}
+Detail Page
+{% endblock title %}
+
+{% block content %}
+    <div class="container-fluid">
+        <div class="card text-center" style="width: 56rem; margin: 0 auto; text-align: center;">
+            <div class="card-body">
+                {% if object.photo %}
+                    <img class='card-img-top' src="{{object.photo.url}}" alt="{{object.title}}">
+                {% endif %}
+                <h1 class="card-title">{{object.title}}</h1>
+                <h6 class="card-subtitle mb-2 text-muted">Mualiff:{{object.author}} | {{object.date}}</h6>
+                <p class="card-text">{{object.body|safe}}</p>
+                <ul class="list-group list-group-flush">
+                    <li class="list-group-item"><a href="{% url "article_list" %}">Barcha maqolalar</a></li>
+                    <li class="list-group-item"><a href="{% url "article_delete" object.pk%}">Maqolani o'chirish</a></li>
+                    <li class="list-group-item"><a href="{% url "article_update" object.pk%}">Maqolani o'zgartirish</a></li>
+                    <div class="card">
+                        <div class="card-header">Izohlar</div>
+                            {% for comment in object.comments.all %}
+                            <div class="card-body">
+                                <blockquote class="blockquote mb-0">
+                                    <p>{{comment}}</p>
+                                    <footer class="blockquote-footer">{{comment.author}}</footer>
+                                </blockquote>
+                            </div>
+                            {% endfor %}
+                            
+                    </div>
+                    
+                </ul>
+            </div>
+        </div>
+    </div>
+    
+
+{% endblock content %}

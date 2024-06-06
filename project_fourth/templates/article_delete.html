@@ -1,0 +1,17 @@
+{% extends "base.html" %}
+
+{% block title %}
+    Delete post
+{% endblock title %}
+
+
+{% block content %}
+  <h1>Maqolani o'chirish</h1>
+  <p>Siz haqiqatdan ham "{{ object.title }}" maqolasini o'chirmoqchimisiz?</p>
+  
+  <form method="post">
+    {% csrf_token %}
+    <button type="submit">Ha, o'chirish</button>
+    <a href="{% url 'article_list' %}">Yo'q, bekor qilish</a>
+  </form>
+{% endblock %}

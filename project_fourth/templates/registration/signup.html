@@ -1,0 +1,14 @@
+{% extends "base.html" %}
+{% load crispy_forms_tags %}
+
+{% block title %}
+    Ro'yxatdan o'tish
+{% endblock title %}
+
+{% block content %}
+    <p>Sayt ro'yxatidan o'ting</p>
+    <form action="" method="post">{% csrf_token %}
+        {{ form|crispy }}
+            <button type="submit" class="btn btn-success">SignUp</button>
+    </form>
+{% endblock content %}
